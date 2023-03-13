@@ -1,26 +1,24 @@
 # Install required packages
 # Run these commands in your terminal or command prompt:
 # pip install xlwt xlrd xlutils
-# pip install PySimpleGUI
 
 import os
 import xlrd
 from xlutils.copy import copy
-import PySimpleGUI as sg
 
-# Get user input for folder path and Excel file path
+# Get folder path from user input
 folder_path = input("Enter folder path to search in: ")
-excel_file_path = input("Enter Excel file path containing search words: ")
 
-# Read search words from Excel file
-workbook = xlrd.open_workbook(excel_file_path)
+# Get file path from user input
+file_path = input("Enter path to Excel file containing search words: ")
+
+# Read search words from selected Excel file
+workbook = xlrd.open_workbook(file_path)
 worksheet = workbook.sheet_by_index(0)
 search_words = [str(cell.value) for cell in worksheet.col(0)]
 
-# Get user input for output file path
-output_file_path = input("Enter output file path for search results: ")
-
-# Create new output Excel file
+# Create output Excel file
+output_file_path = input("Enter path to output Excel file: ")
 output_workbook = xlwt.Workbook()
 output_worksheet = output_workbook.add_sheet("Results")
 output_worksheet.write(0, 0, "Search Word")

@@ -5,14 +5,16 @@
 
 import os
 import xlrd
-from xlutils.copy import copy
+import xlwt
 import PySimpleGUI as sg
+
+from xlutils.copy import copy
 
 # Create GUI to browse for folder
 folder_path = sg.popup_get_folder("Select folder to search in:")
 
 # Create GUI to browse for Excel file containing search words
-sg.theme('DarkAmber')
+sg.theme('LightGrey')
 layout = [[sg.Text('Select Excel file containing search words:')],
           [sg.Input(), sg.FileBrowse(file_types=(("Excel Files", "*.xls"), ("All Files", "*.*")))],
           [sg.Submit(), sg.Cancel()]]
